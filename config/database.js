@@ -1,11 +1,12 @@
 var mysql = require('mysql');
+const config = require('../config/config');
 
 var connection = mysql.createConnection({
-    host:'192.168.0.8',
-    user:'root',
-    password:'',
-    database:'gaktrack',
-    port:'3306',
+    host: config.DATABASE_HOST,
+    user: config.DATABASE_USER,
+    password: config.DATABASE_PASSWORD,
+    database: config.DATABASE_NAME,
+    port: config.DATABASE_PORT,
 });
 
 connection.connect(err => {

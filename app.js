@@ -6,7 +6,7 @@ const bodyParser = require('body-parser');
 
 
 //Importación de rutas
-const userRoute = require('./routes/user');
+const userRoute = require('./routes/userRoute');
 
 //Definición de constantes
 const PORT = process.env.PORT || 3000;
