@@ -1,16 +1,17 @@
 const express = require('express');
-const { createUserOnList } = require('../controllers/usersController');
-const router = express.Router();
+const { registerNewUser } = require('../controllers/usersController');
+const userRouter = express.Router();
 
-router.get('/prueba', (req, res) => {
+//Ruta para enlistar a todos los usuarios en la base de datos con un metodo GET
+userRouter.get('/user', (req, res) => {
     res.status(200).send("Obteniendo resultados");
 })
 
 //Ruta para crear un nuevo usuario con un metodo POST
-router.post('/prueba', async (req, res) => {
+userRouter.post('/user', async (req, res) => {
     try {
         //Crea un nuevo usuario y espera a que la función devuelva un objeto con un mensaje y la consulta en caso de ✅ o un objeto de error❌
-        let results = await createUserOnList(req.body);
+        let results = await registerNewUser(req.body);
         console.log(results);
         res.status(200).send(results.message);
     } catch(error) {
@@ -19,8 +20,9 @@ router.post('/prueba', async (req, res) => {
     }
 })
 
-router.delete('/prueba', (req, res) => {
+//Ruta para eliminar un usuario en especifico de la base de datos con un metodo DELETE
+userRouter.delete('/user', (req, res) => {
     res.status(200).send("Eliminando registro");
 })
 
-module.exports = router;
+module.exports = userRouter;

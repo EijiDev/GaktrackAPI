@@ -5,7 +5,7 @@ const { createUser } = require('../models/usersModel');
 const UsersControllers = {
     
     //Maneja el evento de registro de un nuevo usuario en la base de datos, validando los valores entregados y notificando el error en caso que ocurra
-    createUserOnList: async function({ RUT, Nombre, Apellido, Correo, Contrasenia, Telefono }){
+    registerNewUser: async function({ RUT, Nombre, Apellido, Correo, Contrasenia, Telefono }){
         try {
             //Valida si hay una contraseña
             if(!Contrasenia) throw new Error('No hay ninguna contraseña');
