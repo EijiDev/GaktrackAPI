@@ -9,6 +9,7 @@ var connection = mysql.createConnection({
     port: config.DATABASE_PORT,
 });
 
+
 connection.connect(err => {
     if(err) throw new Error(err);
     console.log('Conexión a la base de datos éxitosa!');
