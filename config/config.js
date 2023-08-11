@@ -1,5 +1,5 @@
 //Importando libreria dotenv para cargar las variables de entorno en el objeto process.env
-const dotenv = require("dotenv").config({ path:__dirname + "/.env" });
+const dotenv = require("dotenv").config({ path:__dirname + "/database.env" });
 
 //Atrapar un error en el caso de que la configuración del dotenv no identifique el archivo .env
 if(dotenv.error) throw dotenv.error;
@@ -13,4 +13,3 @@ module.exports = {
     DATABASE_PORT: process.env.DATABASE_PORT,
 }
 
-//debo separar las config de la API y la bd

@@ -21,12 +21,12 @@ app.use(bodyParser.json()); // Para leer el body de las peticiones/respuestas qu
 app.use('/api', userRoute); //Usando la ruta '/api/user' de la aplicación
 app.use('/api', loginRoute); //Usando la ruta '/api/login' de la aplicación
 
-//Ruta principal
+//Ruta principal de la API
 app.get('/api', (req, res) => {
     res.status(200).send('Hola mundo!');
 });
 
-
+//Configurando el puerto de la aplicación
 app.listen(PORT, () => {
     console.log(`Servidor andando en el puerto ${PORT}!`)
 });
