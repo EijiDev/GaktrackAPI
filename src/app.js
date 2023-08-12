@@ -29,7 +29,7 @@ const app = express();
 //
 
 //Configurando rutas
-app.use('/api/login', loginRouter); //Usando la ruta '/api/login' de la aplicación
+app.use('/api/v1/login', loginRouter); //Usando la ruta '/api/login' de la aplicación
 
 
 //Ruta principal de la API

@@ -49,9 +49,9 @@ const UserModel = {
     //✅ True: En caso de que la consulta por el usuario devuelva 1 o más registros
     //❌ False: En caso de que la consulta por el usuario devuelva 0 
 
-    findUser: async function (email, password){
+    validateUser: async function (email, password){
         //Se establece la consulta que se realizara a la base de datos con los valores de escape (?)
-        const QUERY = "SELECT Correo, Contrasena FROM Usuario WHERE Correo = ? AND Contrasena = ?";
+        const QUERY = "SELECT Id, Correo, Contrasena FROM Usuario WHERE Correo = ? AND Contrasena = ?";
 
         //Se establece el error correspondiente a la consulta para ser mas descriptivo
         const ERRDESCRIPT = "Hubo un error al intentar realizar la consulta para validar el usuario en la base de datos😢";

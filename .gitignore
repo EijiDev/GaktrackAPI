@@ -1,5 +1,2 @@
 node_modules/
-appold.js
-/routes/userRoute.js
-/controllers/usersController.js
-random.js
+src/random.js
