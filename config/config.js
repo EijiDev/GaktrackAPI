@@ -1,8 +1,12 @@
 //Importando libreria dotenv para cargar las variables de entorno en el objeto process.env
 const dotenv = require("dotenv").config({ path:__dirname + "/database.env" });
 
-//Atrapar un error en el caso de que la configuración del dotenv no identifique el archivo .env
-if(dotenv.error) throw dotenv.error;
+
+
+//Atrapar un error en el caso de que la configuración de las variables de entorno en database.env no se puedan pasar al process.env
+if(dotenv.error) throw new Error(`Hubo un error al configurar las variables de entorno ${dotenv.error}`);
+
+
 
 //Configuración de las variables de entorno que contienen las credenciales de la bd
 module.exports = {
