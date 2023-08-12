@@ -42,14 +42,14 @@ function runQuery(query, [...parameters], errDescript) {
 }
 
 //Configurando el objeto modelo que contiene los metodos de comunicación con la tabla usuario en la base de datos 
-const UsersModel = {
+const UserModel = {
 
 
-//Metodo que permite validar si un usuario existe en la base de datos y retorna un valor Booleano:
+//Metodo que permite encontrar si un usuario existe en la base de datos y retorna un valor Booleano:
     //✅ True: En caso de que la consulta por el usuario devuelva 1 o más registros
     //❌ False: En caso de que la consulta por el usuario devuelva 0 
 
-    validateUser: async function (email, password){
+    findUser: async function (email, password){
         //Se establece la consulta que se realizara a la base de datos con los valores de escape (?)
         const QUERY = "SELECT Correo, Contrasena FROM Usuario WHERE Correo = ? AND Contrasena = ?";
 
@@ -74,16 +74,23 @@ const UsersModel = {
                 console.log('No se han devuelto registros');
             }
 
-            //Valida el resultado de la consulta y ve si tiene un registro -> En caso de hacerlo significa que el usuario existe
-            //Por ende actualiza el valor de userExist a true
-            if(queryResult[0]){
-                userExist = true;
+            //Valida el resultado de la consulta y ve si tiene un registro -> En caso de no hacerlo significa que el usuario no existe
+            //Por ende retorna un objeto que informa la no existencia del usuario
+            if(!queryResult[0]){
+                return { userExist };
             }
-
-            //Devuelve un valor booleano que representa el resultado de la validación
-            //True✅: Significa que el usuario fue validado y existe en la BD
-            //False❌: Significa que el usuario no fue validado ya que no existe en la BD
-            return userExist;
+            
+            //En caso de que haya un registro, el usuario existe y por ende se cambia el valor de userExist
+            userExist = true;
+            
+            //Devuelve un objeto que contiene un valor Booleano que valida si el usuario existe junto a una propiedad queryResult que
+            //almacena el primer resultado de la consulta 
+            //Valor Booleano
+                //True✅: Significa que el usuario fue validado y existe en la BD
+                //False❌: Significa que el usuario no fue validado ya que no existe en la BD
+            //Valor de la consulta
+                //Almacena la primera fila coincidente que se obtuvo de la consulta
+            return { userExist, queryResult: queryResult[0] }
 
         } catch(err){
             //Lanza una excepcion que eleva el error atrapado a la siguiente capa para ser capturado
@@ -96,4 +103,4 @@ const UsersModel = {
 } 
 
 //Exportando el objeto UsersModel que contiene los metodos para comunicarse con la tabla Usuarios en la bd
-module.exports = UsersModel;
+module.exports = UserModel;

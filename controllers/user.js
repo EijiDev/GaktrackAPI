@@ -1,5 +1,5 @@
 //El controlador se encarga de manejar la logica del negocio y las restricciones del mismo, es decir que maneja las entradas que envia el usuario y realiza las validaciones adecuadas para luego llevar a cabo las actualizaciones o movimientos correspondientes con el modelo(la base de datos) 
-const { createUser } = require('../models/usersModel');
+const { createUser } = require('../models/Users');
 
 
 const UsersControllers = {
