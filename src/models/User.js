@@ -2,7 +2,7 @@
 //es decir de toda la manipulación directa con la base de datos, ademas de estructurar los datos que se ingresaran
 
 //Importando la conexion a la base de datos 
-const connection = require('../config/database');
+const pool = require('../config/database');
 
 
 //Estoy teniendo un problema para conseguir devolver los valores del resultado de la consulta a una variable externa que me permita hacer validaciones
@@ -29,7 +29,7 @@ function runQuery(query, [...parameters], errDescript) {
     //El arreglo devuelto es objeto enumerable mas no iterable
 
     //Realiza la consulta en la base de datos
-        connection.query(query, [...parameters], (err, results, fields) => {
+        pool.query(query, [...parameters], (err, results, fields) => {
 
             //Si la consulta tiene un error entonces lanza una exception indicando el tipo de error y en que tipo de consulta fue
             if(err) reject(new Error(`${errDescript}: ${err}`));
