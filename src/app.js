@@ -10,7 +10,7 @@ const PORT = process.env.PORT || 3000;
 //Importación de rutas
 const loginRouter = require('./routes/loginRoutes');
 
-//Inicialización del servidor
+//Inicialización del servidor express
 const app = express();
 
 
@@ -29,7 +29,7 @@ const app = express();
 //
 
 //Configurando rutas
-app.use('/api/v1/login', loginRouter); //Usando la ruta '/api/login' de la aplicación
+app.use('/api/v1/login', loginRouter); //Usando la ruta '/api/v1/login' de la aplicación
 
 
 //Ruta principal de la API
