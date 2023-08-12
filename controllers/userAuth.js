@@ -5,9 +5,7 @@ const { validateUser } = require('../models/usersModel');
 const userAuthentication = async function ({ body }, res, next){
 
     //Obtiene las credenciales del usuario que estan en el cuerpo de la solicitud
-    const email = body.email;
-    const password = body.password;
-    body.autorized = false;
+    const { email, password } = body;
 
     try {
         //Realiza una validación de las credenciales del usuario en la base de datos la cual retorna un Booleano
