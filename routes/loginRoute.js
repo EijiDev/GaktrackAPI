@@ -1,16 +1,19 @@
 const express = require('express');
 const loginRoute = express.Router();
+//Importa el middleware para autenticar al usuario
 const userAuthentication = require('../controllers/userAuth');
 
 //Ruta a la que se mandan las credenciales del inicio de sesión en el cuerpo de la request
-//  1.La solicitud es recibida por un middleware que se encarga de validar si el usuario existe en la base de datos de la app
-loginRoute.post('/login', userAuthentication,(req, res) => {
-   
-    console.log(req.body);
-    if(!req.body.autorized){
+//  1.La solicitud es recibida por un middleware que se encarga de autenticar la identidad del usuario y le brinda autorización para acceder a la app
+loginRoute.post('/login', userAuthentication,({ body }, res) => {
+    
+    let { email, password, autorized } = body;
+
+    if(!autorized){
         res.status(400).send('El usuario no existe');
     } else {
-        res.status(200).send('El usuario está autorizado');
+        console.log('Estoy a punto de hacer la redireccion')
+        res.status(200).json({ redireccion:'/inicio', data: body })
     }
 });
 
@@ -28,4 +31,5 @@ loginRoute.post('/login', userAuthentication,(req, res) => {
 //Manejo de excepiones con throw y try...catch
 //https://bigcode.es/expresion-throw-en-javascript/
 
+//Exporta la ruta en la cual se mandan las credenciales para el inicio de sesión de los usuarios
 module.exports = loginRoute;
