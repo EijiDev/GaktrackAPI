@@ -12,7 +12,11 @@ const authenticateUser = async function (req, res, next){
     console.log(`La IP:${req.ip} esta intentando autenticarse!🕴`);
 
     //Obtiene las credenciales del usuario enviadas desde el cliente que estan en el cuerpo de la solicitud
-    const { email, password } = req.body;
+    let { email, password } = req.body;
+
+    //Pasa el correo y la contraseña a mayusculas ya que asi es como estan registrados en la base de datos
+    email = email.toUpperCase();
+    password = password.toUpperCase();
 
     try {
         //Realiza una validación de las credenciales del usuario en la base de datos la cual retorna un objeto que contiene:
@@ -30,9 +34,9 @@ const authenticateUser = async function (req, res, next){
             console.log(`Usuario con acceso!😎`)
             //Almacena el ID del usuario y otros datos en un objeto que luego sera transformado y devuelto como un Token
             const userData = {
-                userID: userAuthentication.queryResult.Id,
+                userID: userAuthentication.queryResult.ID_USER,
                 name: "Cosa",
-                username: "Cosota"
+                rol: "aun nose"
             }
 
             //Transforma el objeto con los datos del usuario a un token JWT
