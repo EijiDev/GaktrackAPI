@@ -1,6 +1,6 @@
-const emailInput = document.querySelector('.login-form #email');
-const passwordInput = document.querySelector('.login-form #password')
-const submitButton = document.querySelector('.login-form #submit-button');
+const emailInput = document.querySelector(' #email');
+const passwordInput = document.querySelector(' #password')
+const submitButton = document.querySelector(' #submit-button');
 
 
 submitButton.addEventListener('click', async function (e) {
