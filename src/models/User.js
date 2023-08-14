@@ -31,6 +31,7 @@ function runQuery(query, [...parameters], errDescript) {
 
     //Realiza la consulta en la base de datos
         pool.query(query, [...parameters], (err, results, fields) => {
+            console.log(`La consulta ha sido ejecutada!😁`)
 
             //Si la consulta tiene un error entonces lanza una exception indicando el tipo de error y en que tipo de consulta fue
             if(err) reject(new Error(`${errDescript}: ${err}`));
@@ -65,14 +66,16 @@ const UserModel = {
             //Realiza la consulta a la base de datos y espera hasta que haya una respuesta para almacenarla en queryResult
             let queryResult = await runQuery(QUERY, [email, password], ERRDESCRIPT);
 
+            console.log(`Consulta finalizada!🕴`)
+
             //Imprime los valores que devuelve la consulta en forma de tabla por consola
-            console.log('Respuesta de la consulta');
+            console.log('Respuesta de la consulta: ⬇');
             if(queryResult[0]){
                 for (const row in queryResult) {
                     console.table(queryResult);
                 };
             } else {
-                console.log('No se han devuelto registros');
+                console.log('No se han devuelto registros.🤷‍♀️🤷‍♂️');
             }
 
             //Valida el resultado de la consulta y ve si tiene un registro -> En caso de no hacerlo significa que el usuario no existe

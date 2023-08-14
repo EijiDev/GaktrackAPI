@@ -7,9 +7,12 @@ const config = require('../config/config');
 //Envia una respuesta desde el servidor al cliente:
 //    ✅200(El usuario fue autenticado) -> Envia un token JWT para mantener la sesión
 //    ❌401(El usuario no esta autorizado) -> No fue autenticado
-const authenticateUser = async function ({ body }, res, next){
+const authenticateUser = async function (req, res, next){
+
+    console.log(`La IP:${req.ip} esta intentando autenticarse!🕴`);
+
     //Obtiene las credenciales del usuario enviadas desde el cliente que estan en el cuerpo de la solicitud
-    const { email, password } = body;
+    const { email, password } = req.body;
 
     try {
         //Realiza una validación de las credenciales del usuario en la base de datos la cual retorna un objeto que contiene:
@@ -24,7 +27,7 @@ const authenticateUser = async function ({ body }, res, next){
         
         //En caso de que el usuario haya sido validado pasa la solicitud al siguiente middleware en la cadena
         if(userExist){
-
+            console.log(`Usuario con acceso!😎`)
             //Almacena el ID del usuario y otros datos en un objeto que luego sera transformado y devuelto como un Token
             const userData = {
                 userID: userAuthentication.queryResult.Id,
@@ -35,13 +38,17 @@ const authenticateUser = async function ({ body }, res, next){
             //Transforma el objeto con los datos del usuario a un token JWT
             const token = jwt.sign(userData, config.SECRET);
 
+            //Avisando que el token fue creado
+            console.log(`Su token ha sido creado!😁`)
+
             //Agrega el token al cuerpo de la petición
-            body.token = token;
+            req.body.token = token;
             
             //Envia la respuesta al cliente con el token de la sesion del usuario y la redirección
             res.status(200).json({ redireccion:'/inicio', token: token });
         } else {
             //En caso de que el usuario no haya sido validado retorna una respuesta 401 No authorized
+            console.log(`La IP:${req.ip} no ha sido autorizada!😠`)
             res.status(401).send('User no authorized');
         }
 

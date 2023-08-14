@@ -6,6 +6,7 @@ const path = require('path')
 
 //Definición de constantes
 const PORT = process.env.PORT || 3000;
+const PUBLIC_PATH = path.join(__dirname, 'public');
 
 //Importación de rutas
 const loginRouter = require('./routes/loginRoutes');
@@ -13,6 +14,9 @@ const loginRouter = require('./routes/loginRoutes');
 //Inicialización del servidor express
 const app = express();
 
+//Sirviendo los archivos estaticos
+// app.use('/', express.static(PUBLIC_PATH));
+// app.use('/inicio', express.static(path.join(PUBLIC_PATH, 'inicio')));
 
 //Configurando middlewares
     //Configuración CORS
@@ -34,20 +38,24 @@ app.use('/api/v1/login', loginRouter); //Usando la ruta '/api/v1/login' de la ap
 
 //Ruta de inicio de sesión de la pagina
 app.get('/', (req, res) => {
+
     //Devuelve la pagina de inicio que contiene el indice
     res.sendFile('index.html',{
-        root: path.join(__dirname, 'public'),
+        root: PUBLIC_PATH,
     })
 
 });
 
 //Prueba para servir una pagina html tras redireccionamiento
 app.get('/inicio', (req, res) => {
-    
+
+    //Mostrando la maquina que ha ingresado y realiza la consulta
+    console.log(`La IP: ${req.ip} ha ingresado exitosamente a ${req.url}!😺`);
+
     //Envia el archivo inicio.html que esta en /api/src/public/
     res.sendFile('inicio.html',{
-        root: path.join(__dirname, 'public'),
-    })
+        root: path.join(PUBLIC_PATH, 'inicio'),
+    });
 
 })
 
