@@ -1,6 +1,6 @@
-const emailInput = document.querySelector('.login-form #email');
-const passwordInput = document.querySelector('.login-form #password')
-const submitButton = document.querySelector('.login-form #submit-button');
+const emailInput = document.querySelector(' #email');
+const passwordInput = document.querySelector(' #password')
+const submitButton = document.querySelector(' #submit-button');
 
 
 submitButton.addEventListener('click', async function (e) {
@@ -44,7 +44,7 @@ submitButton.addEventListener('click', async function (e) {
     try {
         //Permite saber el estado de la solicitud
         console.log("Enviando solicitud🧠");
-        let request = await fetch('http://localhost:3000/api/v1/login', {
+        let request = await fetch('https://gaktrackapi-production.up.railway.app/api/v1/login', {
             method: "POST",
             headers:{
                 "content-type":"application/json",
