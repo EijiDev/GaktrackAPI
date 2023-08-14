@@ -62,4 +62,5 @@ app.get('/inicio', (req, res) => {
 //Configurando el puerto de la aplicación
 app.listen(PORT, () => {
     console.log(`Servidor andando en el puerto ${PORT}!`)
+    console.log(`El directorio es ${__dirname}`);
 });
