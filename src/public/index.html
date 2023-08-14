@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Gaktrack</title>
+	<link rel="stylesheet" type="text/css" href="./styles/style.css">
+	<link href="https://fonts.googleapis.com/css2?family=Jost:wght@500&display=swap" rel="stylesheet">
+	<script src="https://kit.fontawesome.com/6d341f70b2.js" crossorigin="anonymous"></script>
+</head>
+<body class="container">
+	<main class="main content">  	
+
+			<div class="signup">
+				<form class="login-form">
+					<label for="chk" aria-hidden="true" class="I_Estudiante">Inicio de sesión</label>
+
+					<div class="ola">
+
+						<!-- Correo del usuario -->
+						<label for="email"><i class="fa-solid fa-envelope"></i> Correo</label>
+						<input type="email" name="email" id="email" placeholder="Ingrese su correo institucional" required>
+				
+						<!-- Contraseña del usuario -->
+						<label for="password"><i class="fa-solid fa-lock"></i> Contraseña</label>
+						<input type="password" name="password" id="password" placeholder="Ingrese su contraseña" required>
+				
+						<button id="submit-button">Iniciar sesión</button>
+
+					</div>
+				</form>
+			</div>
+
+	</main>
+
+	<footer>
+		<div class="contenedor">
+			<img src="./assets/logo.png" alt="Logo Virev" height="80px"> <h1> - Gacktrack</h1>
+		</div>	
+	</footer>
+
+	<!-- Enlace a los scripts del login -->
+	<script type="module" src="./scripts/main.js"></script>
+</body>
+</html>
