@@ -32,19 +32,23 @@ const app = express();
 app.use('/api/v1/login', loginRouter); //Usando la ruta '/api/v1/login' de la aplicación
 
 
-//Ruta principal de la API
-app.get('/api', (req, res) => {
-    res.status(200).send('Hola Mundo!');
+//Ruta de inicio de sesión de la pagina
+app.get('/', (req, res) => {
+    //Devuelve la pagina de inicio que contiene el indice
+    res.sendFile('index.html',{
+        root: path.join(__dirname, 'public'),
+    })
+
 });
 
 //Prueba para servir una pagina html tras redireccionamiento
 app.get('/inicio', (req, res) => {
     
-    //Envia el archivo index.html que esta en /api/public/
-    res.sendFile('index.html',{
+    //Envia el archivo inicio.html que esta en /api/src/public/
+    res.sendFile('inicio.html',{
         root: path.join(__dirname, 'public'),
     })
-    
+
 })
 
 //Configurando el puerto de la aplicación

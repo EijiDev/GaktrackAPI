@@ -10,7 +10,8 @@ const pool = require('../config/database');
 //https://github.com/mysqljs/mysql#performing-queries
 //https://www.youtube.com/watch?v=AO4rygo86Tw&t=723s
 //https://www.dongee.com/tutoriales/borrar-tablas-en-mysql/#:~:text=El%20comando%20DROP%20TABLE%20se,la%20tabla%20que%20desea%20eliminar.
-
+//El pool va a permitir manejar multiples conexiones concurrentes y realizar multiples consultas dentro de una misma conexión mientras otras
+//hacen lo mismo
 
 //Funcion que permite realizar una consulta a la base de datos de forma asincrona la cual devuelve una promesa
 //La promesa se resuelve ✅ en caso de que no se lanze un error
