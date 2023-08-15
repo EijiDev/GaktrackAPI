@@ -1,8 +1,11 @@
+import { _dirname } from "../dirname.js";
+import path from 'path';
 //Importando libreria dotenv para cargar las variables de entorno en database.env el objeto process.env
 import dotenv from "dotenv";
-let database = dotenv.config({ path:__dirname + "/database.env" });
+dotenv.config({ path:path.join(_dirname,"config/database.env") });
+console.log(path.join(_dirname,"config/database.env"));
 //Importando libreria dotenv para cargar las variables de entorno en .env en el objeto process.env
-const credentials  = dotenv.config({ path:__dirname + "/.env" });
+dotenv.config({ path:path.join(_dirname, "config/.env") });
 
 //Configuración de las variables de entorno que contienen las credenciales de la bd
 export const CONFIG = {

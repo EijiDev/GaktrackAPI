@@ -1,9 +1,10 @@
 //Importa el Router de express
 import { Router } from 'express';
-const loginRouter = Router();
+//Exporta los metodos a los que se tiene acceso desde la ruta /api/v1/login
+export const loginRouter = Router();
 
 //Importa el controlador para autenticar al usuario
-import LoginController from '../controllers/loginController';
+import { LoginController } from '../controllers/loginController.js';
 
 //Ruta a la que se mandan las credenciales del inicio de sesión en el cuerpo de la request
 //  1.La solicitud es manejada por el controlador que se encarga de autenticar la identidad del usuario:
@@ -30,5 +31,3 @@ loginRouter
 //Manejo de excepiones con throw y try...catch
 //https://bigcode.es/expresion-throw-en-javascript/
 
-//Exporta los metodos a los que se tiene acceso desde la ruta /api/v1/login
-module.exports = loginRouter;

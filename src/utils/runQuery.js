@@ -1,5 +1,5 @@
 //Importando la conexion a la base de datos 
-import pool from '../config/database.js';
+import { pool } from '../config/database.js';
 
 //Funcion que permite realizar una consulta a la base de datos de forma asincrona la cual devuelve una promesa
 //La promesa se resuelve ✅ en caso de que no se lanze un error

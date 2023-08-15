@@ -3,13 +3,14 @@ import express from 'express';
 import bodyParser from 'body-parser';
 import cors from 'cors';
 import path from 'path';
+import { _dirname } from './dirname.js';
 
 //Definición de constantes
 const PORT = process.env.PORT || 3000;
-const PUBLIC_PATH = path.join(__dirname, 'public');
+const PUBLIC_PATH = path.join(_dirname, 'public');
 
 //Importación de rutas
-import loginRouter from './routes/loginRoutes.js'
+import { loginRouter } from './routes/loginRoutes.js'
 
 //Inicialización del servidor express
 const app = express();
@@ -25,7 +26,7 @@ const app = express();
     app.use(bodyParser.urlencoded({ extended: false }));
 
     //Para servir los archivos estaticos en la carpeta public, posible front
-    app.use(express.static(path.join(__dirname, 'public'))) 
+    app.use(express.static(path.join(_dirname, 'public'))) 
 //
 
 //Configurando rutas
@@ -57,5 +58,5 @@ app.get('/inicio', (req, res) => {
 //Configurando el puerto de la aplicación
 app.listen(PORT, () => {
     console.log(`Servidor andando en el puerto ${PORT}!`)
-    console.log(`El directorio es ${__dirname}`);
+    console.log(`El directorio es ${_dirname}`);
 });
