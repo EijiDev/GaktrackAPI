@@ -1,9 +1,9 @@
-//El modelo se encarga de manejar la logica de los datos, la extracción, actualización y creacion de datos,
+import { runQuery } from '../utils/runQuery.js';
+
+//El modelo se encarga de manejar la logica de los datos,la logica de negocio(Las funciones que tiene nuestra aplicación las cuales puede realizar el usuario) 
+//Dentro de estas suelen ir la extracción, actualización y creacion de datos, se encargan de hacer las validaciones correspondientes para manejar
+//La integridad de nuestros datos en la base de datos y la persistencia de los datos que enviamos en ella(EJ: validar si un usuario con x correo ya existe, o con x id)
 //es decir de toda la manipulación directa con la base de datos, ademas de estructurar los datos que se ingresaran
-
-//Importando la conexion a la base de datos 
-const pool = require('../config/database');
-
 
 //Estoy teniendo un problema para conseguir devolver los valores del resultado de la consulta a una variable externa que me permita hacer validaciones
 //https://es.stackoverflow.com/questions/273216/poner-resultado-de-una-consulta-mysql-en-otro-fragemento-de-codigo-en-node-js
@@ -13,49 +13,21 @@ const pool = require('../config/database');
 //El pool va a permitir manejar multiples conexiones concurrentes y realizar multiples consultas dentro de una misma conexión mientras otras
 //hacen lo mismo
 
-//Funcion que permite realizar una consulta a la base de datos de forma asincrona la cual devuelve una promesa
-//La promesa se resuelve ✅ en caso de que no se lanze un error
-//La promesa es rechazada ❌ en caso de que se lanze un error al realizarla
-function runQuery(query, [...parameters], errDescript) {
-    return new Promise((resolve, reject) => {
-
-    //La consulta SELECT devuelve un objeto parecido a un array con objetos donde cada objeto en el arreglo representa un registro de la tabla
-    //El objeto contiene como propiedades los valores de los atributos de la tabla
-    //EJ de Consulta: SELECT Correo, Contrasena FROM Usuario;
-    //EJ de Respuesta: [{ "Correo":"papo", "Contrasena":"Pepe" },
-    //                  { "Correo":"Padilla", "Contrasena":"Pao" },
-    //                  { "Correo":"Pepe", "Contrasena":"SoyPepe" }]
-    //Para acceder a algun registro n se debe de almacenar dicho arreglo y acceder de la siguiente forma:
-    //results[n](hasta aqui devuelve el objeto entero).propiedad(Hasta aqui devuelve el valor de un atributo en especifico)
-    //El arreglo devuelto es objeto enumerable mas no iterable
-
-    //Realiza la consulta en la base de datos
-        pool.query(query, [...parameters], (err, results, fields) => {
-            console.log(`La consulta ha sido ejecutada!😁`)
-
-            //Si la consulta tiene un error entonces lanza una exception indicando el tipo de error y en que tipo de consulta fue
-            if(err) reject(new Error(`${errDescript}: ${err}`));
-
-            //Si la consulta es realizada con exito entonces resuelve la promesa con un objeto que contiene los registros en forma de objeto
-            resolve(results);
-
-        });
-    });
-}
-
-//Configurando el objeto modelo que contiene los metodos de comunicación con la tabla usuario en la base de datos 
-const UserModel = {
+//Exportando la clase UserModel que contiene los metodos para comunicarse con la tabla USER en la bd
+//Configurando la clase modelo que contiene los metodos de comunicación con la tabla USER en la base de datos 
+export class UserModel {
 
 
-//Metodo que permite encontrar si un usuario existe en la base de datos y retorna un valor Booleano:
+//Metodo que permite validar si un usuario existe en la base de datos y retorna un valor Booleano:
     //✅ True: En caso de que la consulta por el usuario devuelva 1 o más registros
     //❌ False: En caso de que la consulta por el usuario devuelva 0 
-
-    validateUser: async function (email, password){
+    static async validateUserLogin({ email, password }){
+        //Pasa el correo y la contraseña a mayusculas ya que asi es como estan registrados en la base de datos
+        email = email.toUpperCase();
+        password = password.toUpperCase();
+        
         //Se establece la consulta que se realizara a la base de datos con los valores de escape (?)
         const QUERY = "SELECT ID_USER, USER_EMAIL, USER_PASSWORD FROM USER WHERE USER_EMAIL = ? AND USER_PASSWORD = ?";
-
-        //Reconfigurar querys 
 
         //Se establece el error correspondiente a la consulta para ser mas descriptivo
         const ERRDESCRIPT = "Hubo un error al intentar realizar la consulta para validar el usuario en la base de datos😢";
@@ -96,17 +68,17 @@ const UserModel = {
                 //False❌: Significa que el usuario no fue validado ya que no existe en la BD
             //Valor de la consulta
                 //Almacena la primera fila coincidente que se obtuvo de la consulta
-            return { userExist, queryResult: queryResult[0] }
+            return { userExist, user: queryResult[0] }
 
         } catch(err){
             //Lanza una excepcion que eleva el error atrapado a la siguiente capa para ser capturado
             throw new Error(err);
         }
-    },
+    };
 
+    static async getUserID({ email, password }){
 
+    }
 
 } 
 
-//Exportando el objeto UsersModel que contiene los metodos para comunicarse con la tabla Usuarios en la bd
-module.exports = UserModel;

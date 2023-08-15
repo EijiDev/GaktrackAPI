@@ -1,7 +1,7 @@
 //Importa el modulo mysql
-let mysql = require('mysql');
+import mysql from 'mysql';
 //Importa las credenciales de la base de datos
-const config = require('../config/config');
+import { CONFIG } from '../config/config.js';
 
 //Diferencia entre una conexión Pool y una conexión normal
 //https://es.stackoverflow.com/questions/359715/cu%C3%A1l-ser%C3%ADa-la-diferencia-entre-usar-un-pool-o-usar-una-conexion-tradicional-a-l 
@@ -10,14 +10,15 @@ const config = require('../config/config');
 //https://es.stackoverflow.com/questions/416924/es-recomendable-abrir-conexion-mysql-cada-vez-que-un-usuario-haga-algo
 //https://www.npmjs.com/package/mysql#pooling-connections
 
+//Se exporta el pool de conexiones a la base de datos
 //Crea una conexión con las credenciales correspondientes de la base de datos en prod
-let pool = mysql.createPool({
+export const pool = mysql.createPool({
     connectionLimit: 10,
-    host: config.DATABASE_HOST,
-    user: config.DATABASE_USER,
-    password: config.DATABASE_PASSWORD,
-    database: config.DATABASE_NAME,
-    port: config.DATABASE_PORT,
+    host: CONFIG.DATABASE_HOST,
+    user: CONFIG.DATABASE_USER,
+    password: CONFIG.DATABASE_PASSWORD,
+    database: CONFIG.DATABASE_NAME,
+    port: CONFIG.DATABASE_PORT,
 });
 
 //Intenta obtener una conexión del pool para validar que se puede conectar a la base de datos
@@ -42,8 +43,6 @@ try {
     connection = null;
 }
 
-//Se exporta el pool de conexiones a la base de datos
-module.exports = pool; 
 
 //Tuve que crear un nuevo usuario XAMPP?? Al que le otorgue todos los privilegios y se le indique servidor "%"(Que puede ser accedido desde cualquier ip remota o local), ademas de utilizar como host la IP de mi LAN inalambrica[obligatorio] (IP XAMPP para conectarse a mi xampp desde una pc externa), siguiendo de ejemplo la solución de: https://dev.to/upsier/node-js-error-connect-econnrefused-how-to-connect-with-phpmyadmin-2ekb y https://stackoverflow.com/questions/40477625/nodejs-mysql-er-access-denied-error-access-denied-for-user-rootlocalhost 
 

@@ -1,9 +1,9 @@
 //Importa el Router de express
-const loginRouter = require('express').Router();
+import { Router } from 'express';
+const loginRouter = Router();
 
 //Importa el controlador para autenticar al usuario
-const { authenticateUser } = require('../controllers/loginController');
-
+import LoginController from '../controllers/loginController';
 
 //Ruta a la que se mandan las credenciales del inicio de sesión en el cuerpo de la request
 //  1.La solicitud es manejada por el controlador que se encarga de autenticar la identidad del usuario:
@@ -13,7 +13,7 @@ const { authenticateUser } = require('../controllers/loginController');
 //      No autenticado:
 //          Envia una respuesta 401 desde el servidor de usuario no autorizado
 loginRouter
-    .post('/', authenticateUser)
+    .post('/', LoginController.authenticateUser);
 ;
 
 

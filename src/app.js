@@ -1,22 +1,18 @@
 //Importación de modulos 
-const express = require('express');
-const bodyParser = require('body-parser');
-const cors = require('cors');
-const path = require('path')
+import express from 'express';
+import bodyParser from 'body-parser';
+import cors from 'cors';
+import path from 'path';
 
 //Definición de constantes
 const PORT = process.env.PORT || 3000;
 const PUBLIC_PATH = path.join(__dirname, 'public');
 
 //Importación de rutas
-const loginRouter = require('./routes/loginRoutes');
+import loginRouter from './routes/loginRoutes.js'
 
 //Inicialización del servidor express
 const app = express();
-
-//Sirviendo los archivos estaticos
-// app.use('/', express.static(PUBLIC_PATH));
-// app.use('/inicio', express.static(path.join(PUBLIC_PATH, 'inicio')));
 
 //Configurando middlewares
     //Configuración CORS
@@ -34,7 +30,6 @@ const app = express();
 
 //Configurando rutas
 app.use('/api/v1/login', loginRouter); //Usando la ruta '/api/v1/login' de la aplicación
-
 
 //Ruta de inicio de sesión de la pagina
 app.get('/', (req, res) => {

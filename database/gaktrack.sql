@@ -1,3 +1,6 @@
+##Transact-SQL es una variante mejorada de SQL estandar para las necesidades de Microsoft o Oracle con PL-SQL las cuales implementan la capacidad de usar programación y esto facilita la programación de stored procedures y triggers
+##Son bases de datos que estan muy arraigadas y demandadas en el mundo empresarial por lo que es conveniente aprenderlas y al aprender una ya aprendes por defecto SQL debido a que se basan en este
+
 CREATE TABLE SPECIALITY(
     ID_SPECIALITY INT NOT NULL AUTO_INCREMENT,
     NAME VARCHAR(50) NOT NULL,
