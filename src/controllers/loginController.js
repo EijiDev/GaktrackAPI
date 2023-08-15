@@ -1,5 +1,5 @@
 //Los controladores se encargan de orquestar los datos, es decir, enviarlos a donde deben de ir y posteriormente redirigir a las vistas correspondientes o devolver dichos datos a una vista, alfinal manejan el orden en que se deben manejar estos datos
-
+import bcrypt from 'bcrypt';
 //Importa el modelo de la tabla USER para usar sus metodos
 import { UserModel } from '../models/User.js';
 //importa la libreria de JWT
