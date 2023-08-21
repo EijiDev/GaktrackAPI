@@ -1,5 +1,5 @@
 import path from 'path';
-import { _dirname } from './dirname.js';
+import { _dirname } from '../dirname.js';
 const PUBLIC_PATH = path.join(_dirname, 'public');
 
 export class MainController{
