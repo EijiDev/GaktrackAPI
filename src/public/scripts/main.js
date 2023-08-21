@@ -61,8 +61,7 @@ submitButton.addEventListener('click', async function (e) {
         //Redirección a la pagina de inicio obtenida desde el servidor 
         //https://pablomonteserin.com/curso/javascript/como-redireccionar/
         //location.href = 'https://gaktrackapi-production.up.railway.app' + response.redireccion;
-        location.href = 'https://gaktrackapi-production.up.railway.app' + response.redireccion;
-    } catch (error) {
+        location.href = 'https://gaktrackapi-production.up.railway.app/main';
 
         //Imprime un error en caso de que la petición falle
         console.error('Error al obtener los datos:', error);

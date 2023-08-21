@@ -10,7 +10,8 @@ const PORT = process.env.PORT || 3000;
 const PUBLIC_PATH = path.join(_dirname, 'public');
 
 //Importación de rutas
-import { loginRouter } from './routes/loginRoutes.js'
+import { loginRouter } from './routes/loginRoutes.js';
+import { mainRouter } from './routes/mainRoutes.js';
 
 //Inicialización del servidor express
 const app = express();
@@ -32,28 +33,7 @@ const app = express();
 //Configurando rutas
 app.use('/api/v1/login', loginRouter); //Usando la ruta '/api/v1/login' de la aplicación
 
-//Ruta de inicio de sesión de la pagina
-app.get('/', (req, res) => {
-
-    //Devuelve la pagina de inicio que contiene el indice
-    res.sendFile('index.html',{
-        root: PUBLIC_PATH,
-    })
-
-});
-
-//Prueba para servir una pagina html tras redireccionamiento
-app.get('/inicio', (req, res) => {
-
-    //Mostrando la maquina que ha ingresado y realiza la consulta
-    console.log(`La IP: ${req.ip} ha ingresado exitosamente a ${req.url}!😺`);
-
-    //Envia el archivo inicio.html que esta en /api/src/public/
-    res.sendFile('inicio.html',{
-        root: path.join(PUBLIC_PATH, 'inicio'),
-    });
-
-})
+app.use('/main', mainRouter); //Usando la ruta /main para la pagina principal de la App(Calendario)
 
 //Configurando el puerto de la aplicación
 app.listen(PORT, () => {
