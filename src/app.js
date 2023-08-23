@@ -12,6 +12,7 @@ const PUBLIC_PATH = path.join(_dirname, 'public');
 //Importación de rutas
 import { loginRouter } from './routes/loginRoutes.js';
 import { mainRouter } from './routes/mainRoutes.js';
+import {reserveRouter} from './routes/reservesRoutes.js';
 
 //Inicialización del servidor express
 const app = express();
@@ -34,6 +35,8 @@ const app = express();
 app.use('/api/v1/login', loginRouter); //Usando la ruta '/api/v1/login' de la aplicación
 
 app.use('/main', mainRouter); //Usando la ruta /main para la pagina principal de la App(Calendario)
+
+app.use('/api/v1/reserves', reserveRouter); //Usando la ruta /api/v1/reserves para manejar las reservas de salas
 
 //Configurando el puerto de la aplicación
 app.listen(PORT, () => {
