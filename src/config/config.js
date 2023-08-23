@@ -7,6 +7,8 @@ console.log(path.join(_dirname,"config/database.env"));
 //Importando libreria dotenv para cargar las variables de entorno en .env en el objeto process.env
 dotenv.config({ path:path.join(_dirname, "config/.env") });
 
+
+
 //Configuración de las variables de entorno que contienen las credenciales de la bd
 export const CONFIG = {
     DATABASE_HOST: process.env.DATABASE_HOST,
