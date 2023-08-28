@@ -1,0 +1,400 @@
+/* estableciendo */
+:root{
+    --bright-color: white; 
+    --secundary-color: rgb(215, 250, 249); 
+    --accent: #6bb8f7;
+    /* un moradito lindo: #856bfa */
+    --complement: rgb(168, 209, 228);
+    --dark-color: #111559; 
+    /* hay que cambiar los colores del texto */
+    --text-color: rgb(0, 0, 0);
+    --title-color: rgb(63, 63, 63);
+    --subtitle: gray; 
+    /* numeros que me da flojera editar */
+    --cover-opacity: 0.3;
+
+    /* estilos pegados */
+    --fuentePrimaria: 'Noto Serif';
+    --fuenteSecundaria: 'PT Sans Narrow';
+} 
+
+
+/* reseteandos */
+*{
+    box-sizing: border-box;
+    /* cuenta el margen */
+    margin: 0;
+    padding: 0;
+}
+
+ul{
+    list-style: none;
+}
+
+
+html {
+    font-size: 62.5%;
+}
+
+
+body{
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+
+}
+
+.header{
+    background-color: var(--bright-color);
+    padding: 30px;
+    display: flex;
+    justify-content: space-between;
+    align-content: center;
+    font-size: 1.8rem;
+    overflow-x: auto;
+    width: 100%;
+    position: sticky;
+    top: 0;
+    /* top: 0;
+    left: 0;
+    position: fixed; */
+    
+}
+
+.icon{
+    color: var(--dark-color);
+}
+
+/* era otro contenedor el que tenia el problema del width */
+.schedule-content{
+    height: 100%;
+}
+
+
+/* arreglando los dias */
+.date{
+    background-color: var(--secundary-color);
+    /* el padding tambien hara que los horarios se guarden */
+    padding: 2.5rem 3.5rem;
+    font-size: 2rem;
+    display: flex;
+    justify-content: center;
+    overflow-x: auto;
+    gap: 10px;
+    border-bottom: var(--accent) groove;
+    position: sticky;
+    top: 79px;
+ 
+    
+}
+
+.date span{
+    flex: auto;
+    text-align: center;
+      
+}
+
+/* por ahora es estatico pero se puede ClassList */
+.seleccionado{
+    background-color: var(--accent);
+    border-radius: 20px;
+}
+
+
+
+/* la parte de abajo */
+.agenda{
+    height: 100%;
+    display: grid;
+    grid-template-columns: 0.8fr 2fr;
+}
+
+/* ajustando el grid */
+.grid-parent{
+    display: grid;
+    grid-template-rows: 50px repeat(4, 1fr);
+}
+
+.grid-item{
+    grid-row: span 1;
+    grid-column: span 1;
+}
+
+.agenda-schedule{
+    background-color: var(--bright-color);
+}
+
+.agenda__hours{
+   text-align: center;
+   margin: auto;
+   font-size: 1.6rem;
+}
+
+/* unos estilitos para las horas */
+.inital-hour{
+    color: var(--text-color);
+}
+
+.ending-hour{
+    color: var(--subtitle);
+}
+
+
+
+.agenda-content{
+    background-color: var(--complement);
+}
+
+.agenda__title{
+    padding: 10px 0px;
+    text-align: center;
+    color: var(--title-color);
+    font-size: 1.8rem;
+}
+
+/* las tarjetitas individules */
+
+.subject{
+    background: var(--bright-color);
+    margin: auto;
+    padding: 2rem 2.5rem;
+    width: 95%;
+    height: 87%;
+    border-radius: 10px;    
+    font-size: 1.3rem;
+}
+
+.subject a{
+   float: right;
+   color: var(--subtitle);
+  
+}
+
+
+/* tratando de abrir las tarjetas */
+
+#subject__cover{
+    z-index: 2;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: var(--dark-color);
+    opacity: var(--cover-opacity);
+    
+}
+
+.hide{
+    visibility: hidden;
+}
+
+/* el header debera quedar sticky cuando pase scroll */
+.sticky{
+    position: fixed;
+    top: 0;
+    width: 100%;
+
+}
+
+
+/* La tarjeta en si */
+
+#subject__pop-up{
+    z-index: 3;
+    position: fixed;
+    margin-top: 8rem;
+    justify-self: center;
+    background-color: var(--bright-color);
+    height: 60%;
+    width: 80%;
+    border-radius: 10px;
+    padding: 8% 6%;
+    border: 5px solid var(--accent);
+
+}
+
+
+
+.pop__title{
+    text-align: center;
+    font-size: 3rem;
+    padding: 3% 0%;
+}
+
+.pop__description{
+  font-size: 1.6rem;
+  padding: 1rem 0px;
+}
+
+.pop__goal{
+    display: grid;
+    grid-template-columns: 2fr 0.8fr;
+    font-size: 1.6rem;
+
+
+}
+
+.goal-notes{
+    text-align: center;
+    grid-column: span 1;
+    color: var(--subtitle);
+} 
+
+
+#pop__insert{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 20px;
+}
+
+
+/* el msj de confirmacion */
+#confimation{
+    position: fixed;
+    padding: 2.8rem;
+    border: 5px dashed var(--accent);
+    bottom: 5%;
+    left: 5%; right: 5%; 
+    border-radius: 5px;
+    background-color: var(--bright-color);
+    font-size: 2rem;
+   
+   
+   
+}
+
+
+
+
+/* animaciones */
+.zoomIn {
+    visibility: visible;
+    -webkit-animation-name: zoomIn;
+    animation-name: zoomIn;
+    -webkit-animation-duration: 600ms;
+    animation-duration: 600ms;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+    }
+    @-webkit-keyframes zoomIn {
+    0% {
+    opacity: 0;
+    -webkit-transform: scale3d(.3, .3, .3);
+    transform: scale3d(.3, .3, .3);
+    }
+    50% {
+    opacity: 1;
+    }
+    }
+    @keyframes zoomIn {
+    0% {
+    opacity: 0;
+    -webkit-transform: scale3d(.3, .3, .3);
+    transform: scale3d(.3, .3, .3);
+    }
+    50% {
+    opacity: 1;
+    }
+    } 
+
+    .fadeOut {
+        -webkit-animation-name: fadeOut;
+        animation-name: fadeOut;
+        -webkit-animation-duration: 500ms;
+        animation-duration: 500ms;
+        -webkit-animation-fill-mode: both;
+        animation-fill-mode: both;
+        }
+        @-webkit-keyframes fadeOut {
+        0% {opacity: 1;}
+        100% {opacity: 0;}
+        }
+        @keyframes fadeOut {
+        0% {opacity: 1;}
+        100% {opacity: 0;}
+        } 
+
+        /* porque la opacidad no inicia igual */
+        .fadeOutA {
+            -webkit-animation-name: fadeOut;
+            animation-name: fadeOut;
+            -webkit-animation-duration: 500ms;
+            animation-duration: 500ms;
+            -webkit-animation-fill-mode: both;
+            animation-fill-mode: both;
+            }
+            @-webkit-keyframes fadeOut {
+            0% {opacity: var(--cover-opacity);}
+            100% {opacity: 0;}
+            }
+            @keyframes fadeOut {
+            0% {opacity: var(--cover-opacity);}
+            100% {opacity: 0;}
+            } 
+
+         .fadeIn {
+            visibility: visible;
+        -webkit-animation-name: fadeIn;
+        animation-name: fadeIn;
+        -webkit-animation-duration: 600ms;
+        animation-duration: 600ms;
+        -webkit-animation-fill-mode: both;
+        animation-fill-mode: both;
+        }
+        @-webkit-keyframes fadeIn {
+        0% {opacity: 0;}
+        100% {opacity: 1;}
+        }
+        @keyframes fadeIn {
+        0% {opacity: 0;}
+        100% {opacity: 1;}
+        } 
+
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
