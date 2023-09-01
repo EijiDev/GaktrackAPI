@@ -8,6 +8,56 @@ let msgConfirmation = document.getElementById('confimation');
 let header = document.querySelector('.header');
 let date = document.querySelector('.date');
 
+//cositas del dialogo
+let bienvenida1 = document.getElementById('bienvenida1');
+let buhito = document.getElementById('corriendo');
+let imagen = document.getElementById('imagen');
+bienvenida1.close();
+
+// buhito.addEventListener('click', dialogos);
+// se que no es la mejor practica, pero me rendi
+
+setTimeout(function() {
+    bienvenida1.show();
+}, 1000);
+setTimeout(function() {
+    bienvenida1.innerHTML = "¿No te ha pasado que no sabes como prepararte para estas pruebas?";
+}, 7500);
+setTimeout(function() {
+    bienvenida1.innerHTML = "A mi me pasa mucho";
+}, 12000);
+
+
+setTimeout(function() {
+    imagen.src = "imgs/smart.png";
+    bienvenida1.innerHTML = "Bueno me presento, soy Owlbert, una IA en proceso de desarrollo";
+}, 15000);
+
+setTimeout(function() {
+    imagen.src = "imgs/smart.png";
+    bienvenida1.innerHTML = "Y muy pronto seré tu acompañante en Gacktrack, para ayudarte con tus estudios mediante metas y desafios!";
+}, 20000);
+
+setTimeout(function() {
+    imagen.src = "imgs/standing.png";
+    bienvenida1.innerHTML = "Por ahora puedes recorrer la página e ir viendo el progreso que llevamos.";
+}, 25000);
+
+setTimeout(function() {
+    bienvenida1.close();
+}, 27000);
+
+
+setTimeout(function() {
+    bienvenida1.show();
+    bienvenida1.innerHTML = "Te observo 👀";
+}, 40000);
+
+setTimeout(function() {
+    bienvenida1.close();
+}, 45000);
+
+
 
 // manejando animaciones de salida y entrada
 let makeVisible = () =>{

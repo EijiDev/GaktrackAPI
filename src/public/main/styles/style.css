@@ -84,7 +84,7 @@ body{
     gap: 10px;
     border-bottom: var(--accent) groove;
     position: sticky;
-    top: 79px;
+    top: 70px;
  
     
 }
@@ -108,6 +108,7 @@ body{
     height: 100%;
     display: grid;
     grid-template-columns: 0.8fr 2fr;
+    min-width: 100px;
 }
 
 /* ajustando el grid */
@@ -217,19 +218,19 @@ body{
 
 .pop__title{
     text-align: center;
-    font-size: 3rem;
+    font-size: 4rem;
     padding: 3% 0%;
 }
 
 .pop__description{
-  font-size: 1.6rem;
+  font-size: 2.6rem;
   padding: 1rem 0px;
 }
 
 .pop__goal{
     display: grid;
     grid-template-columns: 2fr 0.8fr;
-    font-size: 1.6rem;
+    font-size: 2.4rem;
 
 
 }
@@ -264,6 +265,36 @@ body{
    
 }
 
+/* la mascotita */
+
+#corriendo{
+   margin: 3rem;
+   width: auto;
+ 
+}
+
+.mascot{
+    z-index: 5;
+    height: 250px;
+    width: 250px;
+    position: fixed;
+    bottom: 0;
+    right: 0;
+   
+
+}
+
+
+.dialoge{
+    font-size: 3rem;
+    width: 60%;
+    margin-right: 250px;
+    position: fixed;
+    bottom: 70px;
+    left: 5rem;
+    border-radius: 5px;
+    padding: 1.5rem;
+}
 
 
 
@@ -352,46 +383,6 @@ body{
         } 
 
       
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
