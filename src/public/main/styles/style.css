@@ -280,18 +280,18 @@ body{
     position: fixed;
     bottom: 0;
     right: 0;
-   
+    object-fit: contain;
 
 }
 
 
 .dialoge{
-    font-size: 3rem;
+    font-size: 2.5rem;
     width: 60%;
     margin-right: 250px;
     position: fixed;
-    bottom: 70px;
-    left: 5rem;
+    bottom: 215px;
+    left: 2.5rem;
     border-radius: 5px;
     padding: 1.5rem;
 }
@@ -383,9 +383,5 @@ body{
         } 
 
       
-
-
-
-
 
 
