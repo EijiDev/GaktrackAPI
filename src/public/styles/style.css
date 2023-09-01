@@ -5,42 +5,53 @@ body{
 	padding: 0;
 	display: flex;
 	justify-content: center;
-	align-items: center;
+	align-items: end;
 	min-height: 100vh;
 	font-family: 'Jost', sans-serif;
 	background: linear-gradient(to bottom, #0f0c29, #302b63, #24243e);
 	
 }
 .main{
-	width: 350px;
-	height: 500px;
+	width: 90%;
+	height: 70rem;
 	background: rgb(255, 255, 255);
-	overflow: hidden;
+	/* overflow: hidden; */
 	border-radius: 10px;
 	box-shadow: 0px 0px 20px #000;
+	padding-top: 5%;
 
 }
+
+/* para que es?? */
 #chk{
 	display: none;
 	justify-content: space-between;
 }
+
+
 .signup{
 	position: relative;
 	width:100%;
 	height: 100%;
 	text-align: center;
 }
-.ola{
+
+/* la clase del email */
+/* .ola{
 	position: relative;
 	top: -58px;
-}
+} */
 h4{
 	text-align: start;
 	padding-left: 17.3%;   
+	font-size: 3rem;
+	margin: 3rem 0px 2rem;
 }
+
+
 label{
 	color: #000000;
-	font-size: 2.3em;
+	font-size: 4em;
 	justify-content: center;
 	display: flex;
 	margin: 60px;
@@ -50,37 +61,49 @@ label{
 }
 
 input{
-	width: 60%;
-	height: 20px;
+	width: 65%;
+	height:2rem;
 	background: #c9c9c9;
 	justify-content: center;
 	display: flex;
 	margin: 20px auto;
-	padding: 10px;
+	padding: 2rem 10px;
 	border: none;
 	outline: none;
-	border-radius: 5px;
+	border-radius: 10px;
+	font-size: 2rem;
 }
+
+
 button{
-	width: 60%;
-	height: 40px;
-	margin: 10px auto;
+	width: 65%;
+	margin: 4rem auto;
 	justify-content: center;
 	display: block;
 	color: #fff;
 	background: #111559;
-	font-size: 1em;
+	font-size: 2.5rem;
+	padding: 1rem 0px;
 	font-weight: bold;
-	margin-top: 20px;
 	outline: none;
 	border: none;
-	border-radius: 5px;
+	border-radius: 10px;
 	transition: .2s ease-in;
 	cursor: pointer;
+}
+
+#password{
+	margin-bottom: 5rem;
 }
 button:hover{
 	background: #070824;
 }
+
+a{
+font-size: 2rem;
+
+}
+
 .login{
 	height: 460px;
 	background: #f0ecec;
@@ -97,6 +120,7 @@ button:hover{
 	margin: 60px auto 80px;
 }
 
+/* esto es para...? */
 #chk:checked ~ .login{
 	transform: translateY(-550px);
 }
@@ -107,7 +131,7 @@ button:hover{
 	transform: scale(.6);
 }
 .I_Estudiante{
-	margin: 50px auto 80px;
+	margin: 50px auto 5rem;
 
 }
 .login_profesor_inputs{
