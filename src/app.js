@@ -4,6 +4,10 @@ import bodyParser from 'body-parser';
 import cors from 'cors';
 import path from 'path';
 import { _dirname } from './dirname.js';
+import * as url from 'url';
+
+//Creación de la constante con la ruta absoluta hacia el directorio raiz del proyecto 
+export const _dirname = url.fileURLToPath(new URL('.', import.meta.url));
 
 //Definición de constantes
 const PORT = process.env.PORT || 3000;
